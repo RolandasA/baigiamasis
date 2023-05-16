@@ -6,3 +6,4 @@ Nuo ten jau galite sekti visus mygtukus
   2. Perskaityti žaidimo taisykles
   3. Pakeisti jums priimtinesnę kalbą
   4. Pradėti žaidimą
+Darbas darytas su MariaDb duomenų baze, application.properties faile jungimosi informacija!
