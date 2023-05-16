@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Game over</title>
+    <link rel="stylesheet" th:href="@{/styles/main.css}"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="p-3 mb-2 bg-dark text-light">
+    <div style="text-align: right;">
+        <a class="btn btn-success" th:href="@{${'/gameOver?lang=en'}}">EN</a>
+        <a class="btn btn-success" th:href="@{${'/gameOver?lang=lt'}}">LT</a>
+    </div>
+    <div class="score">
+        <h1 th:text="#{game.over}"></h1>
+        <h2 th:text="#{yourScore(${yourTotalScore})}"></h2>
+        <h2 th:text="#{opponentScore(${opponentsTotalScore})}"></h2>
+    </div>
+    <br/><br/>
+    <h6 style="padding-left: 20px" th:text="#{final.info}"></h6>
+    <form action="/finalPage" class="form" method="post" th:object="${user}">
+        <div class="form-group">
+            <label for="username" th:text="#{user.name}"></label>
+            <input class="form-control" id="username" th:field="*{username}" type="text"/>
+        </div>
+        <div class="form-group">
+            <label for="age" th:text="#{user.age}"></label>
+            <input class="form-control" id="age" max="150" min="1" th:field="*{age}" type="number"/>
+        </div>
+        <div class="form-group">
+            <label for="height" th:text="#{user.height}"></label>
+            <input class="form-control" id="height" max="250" min="30" th:field="*{height}" type="number"/>
+        </div>
+        <div class="form-group">
+            <label for="your_score" th:text="#{user.score}"></label>
+            <input class="form-control" id="your_score" max="24" min="0" th:field="*{your_score}" type="number"/>
+        </div>
+        <div class="form-group">
+            <label for="opponent_score" th:text="#{opponent.score}"></label>
+            <input class="form-control" id="opponent_score" max="24" min="0" th:field="*{opponent_score}"
+                   type="number"/>
+        </div>
+        <button class="btn btn-success" th:text="#{submit.result}" type="submit"></button>
+    </form>
+</div>
+<div class="footer">
+    <div style="text-align: center;"
+         th:insert="~{footer::copy}"></div>
+</div>
+</body>
+</html>

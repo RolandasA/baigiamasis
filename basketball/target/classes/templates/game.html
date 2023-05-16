@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Basketball Game</title>
+    <link rel="stylesheet" th:href="@{/styles/main.css}"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="p-3 mb-2 bg-dark text-light">
+    <div style="text-align: center;">
+        <h1 th:text="#{the.game}"></h1><br/>
+        <img alt="hoop"
+             src="https://3.bp.blogspot.com/-7WynJFIPYjU/UNwxsXQVBTI/AAAAAAAAAKw/VT3biPimU0o/s320/probreakawayrim.png">
+    </div>
+    <div style="text-align: right;">
+        <h2 style="padding-right: 40px" th:text="#{the.score}"></h2>
+        <h3>
+            <span th:text="#{score.you(${yourTotalScore})}"></span>
+            <span> - </span>
+            <span th:text="#{score.opponent(${opponentsTotalScore})}"></span>
+        </h3>
+    </div>
+    <div style="text-align: center;">
+        <form action="/shoot-two-points" method="post">
+            <button class="btn btn-success" th:text="#{button.shoot2}" type="submit"></button>
+            <input name="yourTwoPointShot" th:value="${yourTwoPointShot}" type="hidden"/>
+        </form>
+        <br/>
+        <form action="/shoot-three-points" method="post">
+            <button class="btn btn-danger" th:text="#{button.shoot3}" type="submit"></button>
+            <input name="yourThreePointShot" th:value="${yourThreePointShot}" type="hidden"/>
+        </form>
+    </div>
+    <h1 style="padding-left: 20px" th:text="#{the.highlights}"></h1>
+    <div th:if="${yourMessage}">
+        <p style="padding-left: 20px" th:text="${yourMessage}"></p>
+    </div>
+    <div th:if="${opponentMessage}">
+        <p style="padding-left: 20px" th:text="${opponentMessage}"></p>
+    </div>
+</div>
+<div class="footer">
+    <div style="text-align: center;"
+         th:insert="~{footer::copy}"></div>
+</div>
+</body>
+</html>

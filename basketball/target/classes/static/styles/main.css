@@ -1,0 +1,35 @@
+table, th, td {
+    font-size: 20px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    height: 50px;
+    background-color: lightgrey;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form.form {
+    padding: 20px;
+    width: 300px;
+}
+
+.score {
+    text-align: center;
+}

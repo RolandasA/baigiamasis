@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rules</title>
+    <link rel="stylesheet" th:href="@{/styles/main.css}"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="p-3 mb-2 bg-dark text-light">
+    <div style="text-align: right;">
+        <a class="btn btn-success" th:href="@{${'/rules?lang=en'}}">EN</a>
+        <a class="btn btn-success" th:href="@{${'/rules?lang=lt'}}">LT</a>
+    </div>
+    <div style="text-align: center;">
+        <h1 th:text="#{game.rules}"></h1><br/>
+        <p style="text-align: left" th:text="#{first.rule}"></p>
+        <p style="text-align: left" th:text="#{second.rule}"></p>
+        <p style="text-align: left" th:text="#{third.rule}"></p>
+        <p style="text-align: left" th:text="#{fourth.rule}"></p>
+        <p style="text-align: left" th:text="#{fifth.rule}"></p>
+        <p style="text-align: left" th:text="#{sixth.rule}"></p>
+        <p style="text-align: left" th:text="#{seventh.rule}"></p>
+        <p style="text-align: left" th:text="#{eighth.rule}"></p>
+
+        <h1 th:text="#{good.luck}"></h1>
+    </div>
+    <div style="text-align: center;">
+        <form action="/main" method="get">
+            <button class="btn btn-success" th:text="#{button.back}" type="submit"></button>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <div style="text-align: center;"
+         th:insert="~{footer::copy}"></div>
+</div>
+</body>
+</html>

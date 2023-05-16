@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link rel="stylesheet" th:href="@{/styles/main.css}"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="p-3 mb-2 bg-dark text-light">
+    <div style="text-align: right;">
+        <a class="btn btn-success" th:href="@{${'/main'}}" th:text="#{button.back}"></a>
+        <a class="btn btn-success" th:href="@{${'/results?lang=en'}}">EN</a>
+        <a class="btn btn-success" th:href="@{${'/results?lang=lt'}}">LT</a>
+    </div>
+    <div style="text-align: center">
+        <h1 th:text="#{results.info}"></h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <th th:text="#{game.id}"></th>
+        <th th:text="#{user.name}"></th>
+        <th th:text="#{user.age}"></th>
+        <th th:text="#{user.height}"></th>
+        <th th:text="#{user.score}"></th>
+        <th th:text="#{opponent.score}"></th>
+        </thead>
+        <tbody>
+        <tr th:each="users : ${users.getContent()}" th:object="${users}">
+            <td th:text="${users.id}"></td>
+            <td th:text="${users.username}"></td>
+            <td th:text="${users.age}"></td>
+            <td th:text="${users.height}"></td>
+            <td th:text="${users.your_score}"></td>
+            <td th:text="${users.opponent_score}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center">
+        <a class="btn btn-success" th:href="@{${'/results?pageId=' + (currentPage - 1)}}" th:if="${currentPage > 0}"
+           th:text="#{button.previous}"></a>
+        <a class="btn btn-success" th:href="@{${'/results?pageId=' + (currentPage + 1)}}"
+           th:if="${currentPage < totalPages - 1}" th:text="#{button.next}"></a>
+    </div>
+</div>
+<div class="footer">
+    <div style="text-align: center;"
+         th:insert="~{footer::copy}"></div>
+</div>
+</body>
+</html>
